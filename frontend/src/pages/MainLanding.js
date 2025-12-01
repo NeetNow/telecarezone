@@ -52,14 +52,7 @@ export default function MainLanding() {
                 onClick={() => navigate('/join-expert')}
                 data-testid="nav-join-expert-btn"
               >
-                Join as Expert
-              </Button>
-              <Button 
-                variant="secondary"
-                onClick={() => navigate('/admin/login')}
-                data-testid="nav-admin-login-btn"
-              >
-                Admin Login
+                Join as Expert - FREE
               </Button>
             </div>
           </div>
