@@ -62,6 +62,9 @@ export default function MainLanding() {
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-block mb-4 px-4 py-2 bg-yellow-300 text-purple-900 rounded-full font-semibold">
+            🎉 Join FREE - Zero Charges for Creating Profile
+          </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             Healthcare Experts
             <br />
@@ -78,6 +81,44 @@ export default function MainLanding() {
           >
             Browse Experts
           </Button>
+        </div>
+      </section>
+
+      {/* Platform Features */}
+      <section className="py-16 px-4 bg-white/5">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-white mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            Why Choose TeleCareZone?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Verified Healthcare Professionals</h3>
+                <p className="text-gray-600">All our doctors are verified with valid medical registrations and credentials</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Video className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">HD Video Consultations</h3>
+                <p className="text-gray-600">Secure, high-quality video calls with your healthcare provider from anywhere</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Settings className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Easy Appointment Booking</h3>
+                <p className="text-gray-600">Book appointments in minutes with our simple and intuitive booking system</p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
