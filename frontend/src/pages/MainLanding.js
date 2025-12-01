@@ -364,8 +364,83 @@ export default function MainLanding() {
 
       {/* Footer */}
       <footer className="bg-white/10 backdrop-blur-md border-t border-white/20 mt-20">
-        <div className="max-w-7xl mx-auto px-4 py-8 text-center text-white">
-          <p>© 2025 TeleCareZone. All rights reserved.</p>
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-white">
+            {/* About */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">About TeleCareZone</h3>
+              <p className="text-sm text-white/80 mb-4">
+                India's leading telemedicine platform connecting patients with verified healthcare professionals for quality video consultations.
+              </p>
+              <div className="flex space-x-3">
+                <a href="#" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                  <span className="text-sm">f</span>
+                </a>
+                <a href="#" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                  <span className="text-sm">t</span>
+                </a>
+                <a href="#" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                  <span className="text-sm">in</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Our Services</h3>
+              <ul className="space-y-2 text-sm text-white/80">
+                <li><a href="#" className="hover:text-white">Video Consultation</a></li>
+                <li><a href="#" className="hover:text-white">Instant Appointments</a></li>
+                <li><a href="#" className="hover:text-white">Digital Prescriptions</a></li>
+                <li><a href="#" className="hover:text-white">Health Records</a></li>
+                <li><a href="#" className="hover:text-white">Medicine Delivery</a></li>
+                <li><a href="#" className="hover:text-white">Lab Tests</a></li>
+              </ul>
+            </div>
+
+            {/* Specialities */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Specialities</h3>
+              <ul className="space-y-2 text-sm text-white/80">
+                <li><a href="#" className="hover:text-white">General Physician</a></li>
+                <li><a href="#" className="hover:text-white">Dermatology</a></li>
+                <li><a href="#" className="hover:text-white">Gynecology</a></li>
+                <li><a href="#" className="hover:text-white">Pediatrics</a></li>
+                <li><a href="#" className="hover:text-white">Psychiatry</a></li>
+                <li><a href="#" className="hover:text-white">Ayurveda</a></li>
+              </ul>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2 text-sm text-white/80">
+                <li><a href="/join-expert" className="hover:text-white">Join as Doctor</a></li>
+                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-white">Terms & Conditions</a></li>
+                <li><a href="#" className="hover:text-white">Refund Policy</a></li>
+                <li><a href="#" className="hover:text-white">Contact Us</a></li>
+                <li><a href="#" className="hover:text-white">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-white/20 mt-8 pt-8 text-center">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-sm text-white/80">
+                © 2025 TeleCareZone. All rights reserved.
+              </p>
+              <div className="flex space-x-6 text-sm text-white/80">
+                <span>🔒 100% Secure Payments</span>
+                <span>✓ Verified Doctors</span>
+                <span>📱 24/7 Support</span>
+              </div>
+            </div>
+            <p className="text-xs text-white/60 mt-4">
+              TeleCareZone is a telemedicine platform. It is not a replacement for physical consultation with a doctor.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
