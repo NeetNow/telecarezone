@@ -1,51 +1,74 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
+
+// Import pages
+import MainLanding from "@/pages/MainLanding";
+import JoinExpert from "@/pages/JoinExpert";
+import AdminLogin from "@/pages/AdminLogin";
+import AdminDashboard from "@/pages/AdminDashboard";
+import DoctorLanding from "@/pages/DoctorLanding";
+import BookAppointment from "@/pages/BookAppointment";
+import PaymentPage from "@/pages/PaymentPage";
+import ConfirmationPage from "@/pages/ConfirmationPage";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+function AppContent() {
+  const location = useLocation();
+  const [subdomain, setSubdomain] = useState(null);
 
   useEffect(() => {
-    helloWorldApi();
+    // Detect subdomain from hostname
+    const hostname = window.location.hostname;
+    const parts = hostname.split('.');
+    
+    // Check if subdomain exists (e.g., doctorname.telecarezone.com)
+    if (parts.length > 2 && parts[0] !== 'www') {
+      setSubdomain(parts[0]);
+    } else {
+      setSubdomain(null);
+    }
   }, []);
 
+  // Show subdomain routes if subdomain detected
+  if (subdomain) {
+    return (
+      <>
+        <Routes>
+          <Route path="/" element={<DoctorLanding subdomain={subdomain} />} />
+          <Route path="/book" element={<BookAppointment subdomain={subdomain} />} />
+          <Route path="/payment/:appointmentId" element={<PaymentPage />} />
+          <Route path="/confirmation/:appointmentId" element={<ConfirmationPage />} />
+        </Routes>
+        <Toaster position="top-right" />
+      </>
+    );
+  }
+
+  // Main domain routes
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<MainLanding />} />
+        <Route path="/join-expert" element={<JoinExpert />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/*" element={<AdminDashboard />} />
+      </Routes>
+      <Toaster position="top-right" />
+    </>
   );
-};
+}
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </div>
   );
