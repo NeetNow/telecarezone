@@ -28,8 +28,12 @@ function AppContent() {
     const parts = hostname.split('.');
     
     // Check if subdomain exists (e.g., doctorname.telecarezone.com)
-    if (parts.length > 2 && parts[0] !== 'www') {
-      setSubdomain(parts[0]);
+    // But skip common subdomains like 'www', 'preview', 'telemed-hub-2'
+    const skipSubdomains = ['www', 'preview', 'telemed-hub-2', 'localhost'];
+    const potentialSubdomain = parts[0];
+    
+    if (parts.length > 2 && !skipSubdomains.includes(potentialSubdomain)) {
+      setSubdomain(potentialSubdomain);
     } else {
       setSubdomain(null);
     }
