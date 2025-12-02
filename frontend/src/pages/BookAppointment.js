@@ -132,7 +132,7 @@ export default function BookAppointment({ subdomain: propSubdomain }) {
         <Card className="bg-white/95 backdrop-blur-sm shadow-2xl">
           <CardHeader>
             <div className="flex items-center justify-between mb-4">
-              <Button variant="ghost" onClick={() => navigate('/')} data-testid="back-btn">
+              <Button variant="ghost" onClick={() => navigate(paramSubdomain ? `/doctor/${subdomain}` : '/')} data-testid="back-btn">
                 ← Back
               </Button>
               <div className="flex items-center space-x-2">
