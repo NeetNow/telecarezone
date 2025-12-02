@@ -179,7 +179,7 @@ export default function MainLanding() {
 
                       <Button 
                         className="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-lg"
-                        onClick={() => window.location.href = `https://${prof.subdomain}.${window.location.hostname.replace('www.', '')}`}
+                        onClick={() => navigate(`/doctor/${prof.subdomain}`)}
                         data-testid={`view-profile-btn-${prof.id}`}
                       >
                         View Profile
