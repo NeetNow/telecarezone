@@ -139,7 +139,7 @@ export default function DoctorLanding({ subdomain: propSubdomain }) {
                     <Button 
                       size="lg"
                       className="bg-blue-600 hover:bg-blue-700 text-white px-8 rounded-full"
-                      onClick={() => navigate('/book')}
+                      onClick={() => navigate(paramSubdomain ? `/doctor/${subdomain}/book` : '/book')}
                       data-testid="book-appointment-btn"
                     >
                       <Calendar className="w-5 h-5 mr-2" />
