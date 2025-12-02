@@ -21,12 +21,13 @@ class Database {
     
     private function __construct() {
         // Auto-detect database type
-        if (getenv('DB_TYPE') === 'mysql' || file_exists('/var/www/html/.htaccess')) {
-            // Hostinger MySQL
-            $this->connectMySQL();
-        } else {
-            // Emergent MongoDB
+        // Use MySQL by default now (migration complete)
+        if (getenv('DB_TYPE') === 'mongodb') {
+            // MongoDB (only if explicitly set)
             $this->connectMongoDB();
+        } else {
+            // MySQL (default)
+            $this->connectMySQL();
         }
     }
     
