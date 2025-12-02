@@ -14,8 +14,10 @@ import { format, addDays, addMinutes, setHours, setMinutes } from 'date-fns';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-export default function BookAppointment({ subdomain }) {
+export default function BookAppointment({ subdomain: propSubdomain }) {
   const navigate = useNavigate();
+  const { subdomain: paramSubdomain } = useParams();
+  const subdomain = propSubdomain || paramSubdomain;
   const [professional, setProfessional] = useState(null);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1); // 1: Select slot, 2: Personal info
