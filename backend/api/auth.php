@@ -58,7 +58,10 @@ function adminLogin($data) {
         }
     }
     
-    if (!$admin || !password_verify($data['password'], $admin['password'])) {
+    // Check password - support both 'password' and 'password_hash' field names
+    $passwordHash = $admin['password'] ?? $admin['password_hash'] ?? '';
+    
+    if (!$admin || !password_verify($data['password'], $passwordHash)) {
         sendError('Invalid credentials', 401);
     }
     
