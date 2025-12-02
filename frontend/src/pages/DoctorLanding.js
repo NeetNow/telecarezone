@@ -9,8 +9,10 @@ import { Calendar, Instagram, Youtube, Twitter, Star } from 'lucide-react';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-export default function DoctorLanding({ subdomain }) {
+export default function DoctorLanding({ subdomain: propSubdomain }) {
   const navigate = useNavigate();
+  const { subdomain: paramSubdomain } = useParams();
+  const subdomain = propSubdomain || paramSubdomain;
   const [professional, setProfessional] = useState(null);
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
