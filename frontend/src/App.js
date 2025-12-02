@@ -59,9 +59,13 @@ function AppContent() {
     <>
       <Routes>
         <Route path="/" element={<MainLanding />} />
+        <Route path="/doctor/:subdomain" element={<DoctorLanding />} />
+        <Route path="/doctor/:subdomain/book" element={<BookAppointment />} />
         <Route path="/join-expert" element={<JoinExpert />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/*" element={<AdminDashboard />} />
+        <Route path="/payment/:appointmentId" element={<PaymentPage />} />
+        <Route path="/confirmation/:appointmentId" element={<ConfirmationPage />} />
       </Routes>
       <Toaster position="top-right" />
     </>
