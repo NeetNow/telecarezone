@@ -138,12 +138,13 @@ function sendError($message, $statusCode = 400) {
 // STEP 6: LOAD API HANDLERS
 // ============================================================================
 // Load all API endpoint handlers
-require_once __DIR__ . '/api/auth.php';              // Authentication
+require_once __DIR__ . '/api/auth.php';               // Authentication
 require_once __DIR__ . '/api/professionals.php';      // Doctor management
 require_once __DIR__ . '/api/appointments.php';       // Appointment booking
 require_once __DIR__ . '/api/payments.php';           // Payment processing
 require_once __DIR__ . '/api/testimonials.php';       // Testimonials
 require_once __DIR__ . '/api/analytics.php';          // Analytics & reports
+require_once __DIR__ . '/api/admin_onboarding.php';   // Admin onboarding system
 
 // ============================================================================
 // STEP 7: ROUTING LOGIC
@@ -175,9 +176,14 @@ try {
         // --------------------------------------------------------------------
         // ADMIN AUTHENTICATION ROUTES
         // --------------------------------------------------------------------
-        // Handles: /admin/login, /admin/analytics, etc.
+        // Handles: /admin/login, /admin/analytics, /admin/onboarding/*
         case 'admin':
-            handleAdminRoutes($segments, $method, $data, $queryParams);
+            // Check if it's an onboarding route
+            if (isset($segments[1]) && $segments[1] === 'onboarding') {
+                handleAdminOnboardingRoutes($segments, $method, $data, $queryParams);
+            } else {
+                handleAdminRoutes($segments, $method, $data, $queryParams);
+            }
             break;
         
         // --------------------------------------------------------------------
