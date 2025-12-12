@@ -12,6 +12,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+// Import new admin components
+import DoctorOnboarding from '@/pages/admin/DoctorOnboarding';
+import DoctorManagement from '@/pages/admin/DoctorManagement';
+import Analytics from '@/pages/admin/Analytics';
+import LeadsManagement from '@/pages/admin/LeadsManagement';
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
@@ -409,10 +415,17 @@ export default function AdminDashboard() {
           <Route path="dashboard" element={<DashboardHome />} />
           <Route path="professionals" element={<ProfessionalsManagement />} />
           <Route path="analytics/:professionalId" element={<ProfessionalAnalytics professionalId={professionalId} />} />
+          
+          {/* New Routes for Enhanced Admin Features */}
+          <Route path="onboarding" element={<DoctorOnboarding />} />
+          <Route path="doctors" element={<DoctorManagement />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="leads" element={<LeadsManagement />} />
+          
           <Route path="*" element={
             <div className="text-center space-y-6" data-testid="admin-dashboard-root">
               <h2 className="text-3xl font-bold">Welcome to Admin Dashboard</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 <Link to="/admin/dashboard">
                   <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                     <CardContent className="p-6 text-center">
@@ -422,12 +435,39 @@ export default function AdminDashboard() {
                     </CardContent>
                   </Card>
                 </Link>
-                <Link to="/admin/professionals">
+                <Link to="/admin/onboarding">
                   <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                     <CardContent className="p-6 text-center">
-                      <Users className="w-12 h-12 mx-auto mb-4 text-purple-600" />
-                      <h3 className="text-xl font-semibold">Professionals</h3>
-                      <p className="text-gray-600 mt-2">Manage healthcare experts</p>
+                      <Users className="w-12 h-12 mx-auto mb-4 text-green-600" />
+                      <h3 className="text-xl font-semibold">Add Doctor</h3>
+                      <p className="text-gray-600 mt-2">27-field onboarding form</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/admin/doctors">
+                  <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                    <CardContent className="p-6 text-center">
+                      <Users className="w-12 h-12 mx-auto mb-4 text-blue-600" />
+                      <h3 className="text-xl font-semibold">Manage Doctors</h3>
+                      <p className="text-gray-600 mt-2">View & edit professionals</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/admin/analytics">
+                  <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                    <CardContent className="p-6 text-center">
+                      <BarChart3 className="w-12 h-12 mx-auto mb-4 text-orange-600" />
+                      <h3 className="text-xl font-semibold">Analytics</h3>
+                      <p className="text-gray-600 mt-2">Reports & insights</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+                <Link to="/admin/leads">
+                  <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+                    <CardContent className="p-6 text-center">
+                      <Clock className="w-12 h-12 mx-auto mb-4 text-yellow-600" />
+                      <h3 className="text-xl font-semibold">New Leads</h3>
+                      <p className="text-gray-600 mt-2">Review applications</p>
                     </CardContent>
                   </Card>
                 </Link>
