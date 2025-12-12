@@ -1,0 +1,150 @@
+# ============================================================================
+# TeleCareZone .htaccess Configuration
+# ============================================================================
+# This file configures URL rewriting for the TeleCareZone platform
+# Compatible with Apache servers (XAMPP, WAMP, Hostinger)
+# ============================================================================
+
+# Enable URL Rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set the base directory (adjust if needed)
+    RewriteBase /
+    
+    # ========================================================================
+    # SECURITY RULES
+    # ========================================================================
+    
+    # Protect sensitive files and directories
+    # Block access to hidden files (starting with .)
+    RewriteRule ^\.(?!well-known/) - [F]
+    
+    # Block access to composer files
+    RewriteRule ^composer\.(json|lock)$ - [F,L]
+    
+    # Block access to config files
+    RewriteRule ^config/ - [F,L]
+    
+    # ========================================================================
+    # API ROUTING RULES
+    # ========================================================================
+    
+    # If the request is for the frontend React app (no /api prefix)
+    # Skip rewriting for actual files and directories
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/api/
+    
+    # Serve React app for frontend routes
+    RewriteRule ^(?!api/) /frontend/build/index.html [L]
+    
+    # If request starts with /api/, route to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^api/(.*)$ /index.php [QSA,L]
+    
+    # If no /api/ prefix but accessing API directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(admin|professionals|appointments|payments|testimonials|onboarding|public)(.*)$ /index.php [QSA,L]
+    
+</IfModule>
+
+# ============================================================================
+# PHP SETTINGS
+# ============================================================================
+<IfModule mod_php7.c>
+    # Maximum file upload size (for profile photos, videos)
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    
+    # Memory limit
+    php_value memory_limit 256M
+    
+    # Execution time
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# For PHP 8.x
+<IfModule mod_php.c>
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+    php_value memory_limit 256M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# ============================================================================
+# MIME TYPES
+# ============================================================================
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType application/javascript .js
+    AddType text/javascript .js
+    
+    # JSON
+    AddType application/json .json
+    
+    # Video formats
+    AddType video/mp4 .mp4
+    AddType video/webm .webm
+    
+    # Image formats
+    AddType image/webp .webp
+    AddType image/svg+xml .svg
+</IfModule>
+
+# ============================================================================
+# COMPRESSION
+# ============================================================================
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# ============================================================================
+# CACHING
+# ============================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Fonts
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ============================================================================
+# ERROR PAGES
+# ============================================================================
+# Uncomment and customize error pages if needed
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# ============================================================================
+# DIRECTORY BROWSING
+# ============================================================================
+# Disable directory browsing for security
+Options -Indexes
+
+# ============================================================================
+# FILE ACCESS PERMISSIONS
+# ============================================================================
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ============================================================================
+# END OF CONFIGURATION
+# ============================================================================
