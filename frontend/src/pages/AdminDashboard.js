@@ -16,6 +16,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 function DashboardHome() {
+  const navigate = useNavigate();
   const [analytics, setAnalytics] = useState(null);
 
   useEffect(() => {
@@ -38,10 +39,18 @@ function DashboardHome() {
 
   return (
     <div className="space-y-6" data-testid="dashboard-home">
-      <h2 className="text-3xl font-bold">Platform Overview</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-3xl font-bold">Platform Overview</h2>
+        <Button 
+          onClick={() => navigate('/admin/onboarding')}
+          className="bg-purple-600 hover:bg-purple-700"
+        >
+          + Add New Doctor
+        </Button>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/doctors')}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Professionals</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -54,7 +63,7 @@ function DashboardHome() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/leads')}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending Applications</CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
@@ -65,7 +74,7 @@ function DashboardHome() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/analytics')}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Appointments</CardTitle>
             <BarChart3 className="h-4 w-4 text-muted-foreground" />
@@ -78,7 +87,7 @@ function DashboardHome() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/analytics')}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Platform Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -89,6 +98,22 @@ function DashboardHome() {
               Total: ₹{analytics.total_revenue?.toFixed(2) || '0.00'}
             </p>
           </CardContent>
+        </Card>
+      </div>
+
+      {/* Quick Action Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+        <Card className="p-6 cursor-pointer hover:bg-purple-50 transition-colors" onClick={() => navigate('/admin/onboarding')}>
+          <h3 className="font-semibold text-lg mb-2">🩺 Onboard New Doctor</h3>
+          <p className="text-sm text-gray-600">Add a new professional with comprehensive 27-field form</p>
+        </Card>
+        <Card className="p-6 cursor-pointer hover:bg-blue-50 transition-colors" onClick={() => navigate('/admin/doctors')}>
+          <h3 className="font-semibold text-lg mb-2">👥 Manage Doctors</h3>
+          <p className="text-sm text-gray-600">View, edit, and manage all healthcare professionals</p>
+        </Card>
+        <Card className="p-6 cursor-pointer hover:bg-green-50 transition-colors" onClick={() => navigate('/admin/analytics')}>
+          <h3 className="font-semibold text-lg mb-2">📊 View Analytics</h3>
+          <p className="text-sm text-gray-600">Track revenue, appointments, and doctor performance</p>
         </Card>
       </div>
     </div>
