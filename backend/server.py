@@ -26,6 +26,7 @@ PHP_BACKEND_URL = "http://localhost:8002"
 async def proxy_to_php(path: str, request: Request):
     """
     Forward all /api/* requests to the PHP backend
+    This bridge allows the existing Python supervisor setup to work with PHP
     """
     try:
         # Get the request body
@@ -35,7 +36,7 @@ async def proxy_to_php(path: str, request: Request):
         headers = dict(request.headers)
         headers.pop('host', None)
         
-        # Make request to PHP backend
+        # Make request to PHP backend (now using root index.php via nginx)
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.request(
                 method=request.method,
@@ -54,7 +55,7 @@ async def proxy_to_php(path: str, request: Request):
     
     except httpx.ConnectError:
         return Response(
-            content='{"error": "PHP backend is not running"}',
+            content='{"error": "PHP backend is not running on port 8002"}',
             status_code=503,
             media_type="application/json"
         )
