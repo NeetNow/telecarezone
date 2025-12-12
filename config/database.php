@@ -1,32 +1,86 @@
 <?php
 /**
- * Database Configuration
- * Compatible with both MongoDB (Emergent) and MySQL (Hostinger)
+ * ============================================================================
+ * Database Configuration Class
+ * ============================================================================
+ * 
+ * This class provides a singleton database connection that works with both:
+ * - MySQL/MariaDB (default for XAMPP, Hostinger)
+ * - MongoDB (optional, for Emergent platform)
+ * 
+ * The connection type is automatically detected based on environment or
+ * can be explicitly set via DB_TYPE environment variable.
+ * 
+ * @author TeleCareZone Development Team
+ * @version 2.0.0
+ * 
+ * ============================================================================
+ * USAGE EXAMPLES:
+ * ============================================================================
+ * 
+ * // Get database instance
+ * $db = Database::getInstance()->getDB();
+ * 
+ * // Check if using MySQL
+ * if (Database::getInstance()->isMySQL()) {
+ *     // MySQL specific code
+ *     $conn = Database::getInstance()->getConnection();
+ *     $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
+ * } else {
+ *     // MongoDB specific code
+ *     $users = $db->users->find(['id' => $userId]);
+ * }
+ * 
+ * ============================================================================
  */
 
 class Database {
+    // Singleton instance
     private static $instance = null;
+    
+    // Database connection object (PDO for MySQL, MongoDB\Client for MongoDB)
     private $connection;
+    
+    // Database type identifier ('mysql' or MongoDB\Database object)
     private $db;
     
-    // For Hostinger MySQL
+    // ========================================================================
+    // MYSQL CONFIGURATION
+    // ========================================================================
+    // These settings work for:
+    // - Local XAMPP/WAMP (default settings)
+    // - Hostinger shared hosting (update in production)
     private $mysql_host = 'localhost';
-    private $mysql_user = 'root';
-    private $mysql_pass = '';
+    private $mysql_user = 'root';           // Change in production
+    private $mysql_pass = '';               // Change in production  
     private $mysql_db = 'telecarezone_db';
     
-    // For Emergent MongoDB
+    // ========================================================================
+    // MONGODB CONFIGURATION
+    // ========================================================================
+    // These settings are for Emergent platform or if you want to use MongoDB
     private $mongo_url = 'mongodb://localhost:27017';
     private $mongo_db = 'telecarezone_db';
     
+    /**
+     * Private constructor to enforce singleton pattern
+     * Automatically connects to the appropriate database
+     */
     private function __construct() {
-        // Auto-detect database type
-        // Use MySQL by default now (migration complete)
-        if (getenv('DB_TYPE') === 'mongodb') {
-            // MongoDB (only if explicitly set)
+        // ====================================================================
+        // AUTO-DETECT DATABASE TYPE
+        // ====================================================================
+        // Priority:
+        // 1. Check DB_TYPE environment variable (mongodb/mysql)
+        // 2. Default to MySQL (recommended for XAMPP/Hostinger)
+        
+        $dbType = getenv('DB_TYPE') ?: 'mysql';
+        
+        if ($dbType === 'mongodb') {
+            // MongoDB connection (optional)
             $this->connectMongoDB();
         } else {
-            // MySQL (default)
+            // MySQL connection (default)
             $this->connectMySQL();
         }
     }
