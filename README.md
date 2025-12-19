@@ -1,502 +1,339 @@
-# TeleCareZone - Healthcare Experts SAAS Platform
+# 🏥 TeleCareZone - Healthcare Professional Platform
 
-## Overview
-
-TeleCareZone is a complete production-grade SAAS platform designed exclusively for healthcare professionals who conduct teleconsultations. The platform enables doctors to have their personalized landing pages with automated appointment scheduling, payment processing, and notification systems.
+A complete SAAS platform for healthcare professionals to manage their online presence, appointments, and patient consultations.
 
 ---
 
-## Technology Stack
+## 🌟 Features
 
-### Frontend
-- **React 19** - Modern UI framework
-- **Tailwind CSS** - Utility-first styling
-- **Shadcn UI** - Beautiful component library
-- **Axios** - API communication
-- **React Router** - Navigation
+### For Healthcare Professionals
+- **Personalized Landing Pages** - Each professional gets their own profile page
+- **Appointment Management** - Schedule and manage patient consultations
+- **Payment Processing** - Integrated Razorpay with automatic fee splitting
+- **Video Consultations** - Google Meet integration
+- **Profile Customization** - Custom themes, bio, qualifications, social media
 
-### Backend
-- **Core PHP 8.2** - No framework dependencies
-- **Pure PHP** - Runs on any hosting
-- **RESTful API** - 25+ endpoints
-- **JWT Authentication** - Secure admin access
+### For Administrators
+- **27-Field Onboarding System** - Comprehensive professional registration
+- **Doctor Management** - Full CRUD operations for professionals
+- **Analytics Dashboard** - Revenue tracking, appointment metrics, performance insights
+- **Leads Management** - Review and approve new professional applications
+- **Multi-level Access Control** - Secure admin authentication
 
-### Database
-- **Dual Support:**
-  - **MongoDB** - For Emergent hosting (development)
-  - **MySQL** - For Hostinger hosting (production)
-- **Auto-detection** - Switches automatically based on environment
-
-### Integrations
-- **Razorpay** - Payment gateway with split payments (10% platform, 90% doctor)
-- **Fast2SMS** - WhatsApp Business API for notifications
-- **Google Meet** - Video consultation platform
-- **OAuth** - Google Calendar integration
+### For Patients
+- **Easy Booking** - Simple appointment scheduling
+- **Multiple Payment Options** - Razorpay integration
+- **WhatsApp Notifications** - Automated booking confirmations
+- **Email Reminders** - Appointment notifications
+- **Professional Profiles** - View qualifications, experience, fees
 
 ---
 
-## Features
+## 🛠️ Technology Stack
 
-### Main Domain Features
-- Professional landing page with expert listings
-- Expert onboarding form with admin approval workflow
-- Admin dashboard with analytics
-- 4 sample doctors with complete profiles
-- Responsive mobile-first design
-- Comprehensive footer with services
+**Frontend:**
+- React 18
+- TailwindCSS
+- Shadcn UI Components
+- React Router
+- Axios
 
-### Subdomain System
-- Automatic subdomain generation (e.g., drjohn.telecarezone.com)
-- Personalized landing pages per doctor
-- Social media integration (Instagram, YouTube, Twitter)
-- Patient testimonials display
-- Professional credentials and experience
-- Custom consultation fees
+**Backend:**
+- PHP 8.0+ (Core PHP)
+- MySQL/MariaDB
+- JWT Authentication
+- RESTful API
 
-### Appointment Booking
-- 7-day advance booking
-- Hourly time slots (9 AM - 6 PM)
-- Two-step booking process
-- Patient information collection
-- Issue detail capture
-
-### Payment Processing
-- Razorpay integration
-- Secure payment gateway
-- 10% platform fee, 90% to doctor
-- Automatic split payments
-- Transaction tracking
-
-### Notifications
-- WhatsApp confirmations (Fast2SMS)
-- Doctor notifications
-- 15-minute reminders
-- Email confirmations (structure ready)
-
-### Admin Dashboard
-- Platform analytics overview
-- Professional management
-- Approve/reject applications
-- Individual doctor analytics
-- Revenue tracking
-- Appointment statistics
+**Integrations:**
+- Razorpay (Payment Gateway)
+- Google Meet (Video Consultations)
+- Fast2SMS (WhatsApp/SMS Notifications)
+- Email (SMTP)
 
 ---
 
-## Quick Start
+## 📦 Project Structure
+
+```
+telecarezone/
+├── index.html              # React frontend (production build)
+├── api_index.php           # Backend API entry point
+├── .htaccess              # Apache URL rewriting
+├── api/                   # API endpoint handlers
+│   ├── admin_onboarding.php
+│   ├── auth.php
+│   ├── professionals.php
+│   ├── appointments.php
+│   └── ...
+├── config/                # Configuration files
+│   ├── config.php
+│   ├── database.php
+│   └── .env              # Environment variables
+├── services/              # Business logic
+│   ├── JWTService.php
+│   ├── RazorpayService.php
+│   └── ...
+├── models/               # Data models
+├── uploads/              # User uploaded files
+│   ├── profiles/
+│   ├── videos/
+│   └── documents/
+├── static/               # React static assets
+├── vendor/               # Composer dependencies
+└── database_import.sql   # Database schema
+```
+
+---
+
+## 🚀 Deployment
 
 ### Prerequisites
+- Hostinger shared hosting account
+- Domain name (mykitchenfarm.com)
+- MySQL database
 - PHP 8.0 or higher
-- MySQL 5.7+ (for production) or MongoDB (for development)
-- Node.js 18+ (for frontend)
-- Composer (optional)
+- cPanel access
 
-### Installation
+### Quick Start
 
-#### 1. Clone Repository
-```bash
-git clone <repository-url>
-cd telecarezone
-```
+1. **Download Project Files**
+   ```bash
+   git clone <repository-url>
+   ```
 
-#### 2. Backend Setup
+2. **Upload to Hostinger**
+   - Use cPanel File Manager
+   - Upload all files to `public_html/`
 
-**On Emergent (MongoDB):**
-```bash
-cd backend/public
-php -S 0.0.0.0:8000 &
-```
+3. **Import Database**
+   - Open phpMyAdmin
+   - Import `database_import.sql`
 
-**On Hostinger (MySQL):**
-- Upload `/backend/` to `public_html/`
-- Import `/backend/database/mysql_schema.sql`
-- Configure database credentials in `/backend/config/database.php`
+4. **Configure Environment**
+   - Edit `config/.env`
+   - Update database credentials
+   - Generate JWT secret
 
-#### 3. Frontend Setup
-```bash
-cd frontend
-yarn install
-yarn start
-```
+5. **Test Deployment**
+   - Visit: https://mykitchenfarm.com
+   - Login: admin / admin123
 
-#### 4. Environment Configuration
+### Detailed Instructions
 
-**Backend** (`/backend/config/config.php`):
-```php
-// Razorpay
-define('RAZORPAY_KEY_ID', 'your_key_id');
-define('RAZORPAY_KEY_SECRET', 'your_secret');
+📖 **See:** [HOSTINGER_DEPLOYMENT_GUIDE.md](HOSTINGER_DEPLOYMENT_GUIDE.md)
 
-// Fast2SMS
-define('FAST2SMS_API_KEY', 'your_api_key');
-
-// Google Meet
-define('GOOGLE_CLIENT_ID', 'your_client_id');
-define('GOOGLE_CLIENT_SECRET', 'your_client_secret');
-```
-
-**Frontend** (`/frontend/.env`):
-```env
-REACT_APP_BACKEND_URL=http://localhost:8000
-```
+📋 **Quick Reference:** [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
 
 ---
 
-## Project Structure
+## 🔑 Default Credentials
 
-```
-/app/
-├── backend/                    # PHP Backend
-│   ├── api/                    # API endpoint handlers
-│   │   ├── auth.php           # Authentication
-│   │   ├── professionals.php  # Doctor management
-│   │   ├── appointments.php   # Booking system
-│   │   ├── payments.php       # Payment processing
-│   │   ├── testimonials.php   # Reviews
-│   │   └── analytics.php      # Analytics
-│   ├── config/                 # Configuration
-│   │   ├── config.php         # Main config
-│   │   ├── database.php       # Database (MongoDB/MySQL)
-│   │   └── .htaccess          # Hostinger routing
-│   ├── services/               # Integration services
-│   │   ├── JWTService.php     # Authentication
-│   │   ├── Fast2SMSService.php # WhatsApp
-│   │   ├── RazorpayService.php # Payments
-│   │   └── GoogleMeetService.php # Meetings
-│   ├── database/               # Database schemas
-│   │   └── mysql_schema.sql   # MySQL tables
-│   └── public/
-│       └── index.php          # Main API router
-│
-├── frontend/                   # React Frontend
-│   ├── public/                 # Static files
-│   └── src/
-│       ├── pages/              # Page components
-│       │   ├── MainLanding.js
-│       │   ├── JoinExpert.js
-│       │   ├── AdminLogin.js
-│       │   ├── AdminDashboard.js
-│       │   ├── DoctorLanding.js
-│       │   ├── BookAppointment.js
-│       │   ├── PaymentPage.js
-│       │   └── ConfirmationPage.js
-│       ├── components/         # UI components
-│       │   └── ui/             # Shadcn components
-│       ├── App.js              # Main app
-│       └── App.css             # Styles
-│
-└── docs/                       # Documentation
-    ├── API_DOCUMENTATION.md
-    ├── DEPLOYMENT.md
-    ├── API_CREDENTIALS_REQUIRED.md
-    ├── MONGODB_TO_MYSQL_MIGRATION.md
-    └── USER_GUIDE.md
-```
-
----
-
-## API Endpoints
-
-### Base URL
-- **Development:** `http://localhost:8000/api`
-- **Production:** `https://yourdomain.com/api`
-
-### Authentication
-- `POST /admin/login` - Admin login
-- `POST /admin/create-default` - Create default admin
-
-### Professionals
-- `GET /professionals` - List all (admin)
-- `POST /professionals` - Create professional (admin)
-- `GET /professionals/{id}` - Get by ID (admin)
-- `PUT /professionals/{id}` - Update (admin)
-- `GET /professionals/approved` - Public list
-- `GET /public/professional/{subdomain}` - Get by subdomain
-
-### Appointments
-- `POST /appointments` - Create booking
-- `GET /appointments/{id}` - Get details
-- `GET /appointments/professional/{id}` - List by doctor
-- `PUT /appointments/{id}/complete-payment` - Complete payment
-
-### Payments
-- `POST /payments/create-order` - Create Razorpay order
-
-### Testimonials
-- `POST /testimonials` - Create (admin)
-- `GET /testimonials/{professional_id}` - Get by doctor
-
-### Analytics
-- `GET /admin/analytics/{id}` - Doctor analytics
-- `GET /admin/analytics/overview` - Platform analytics
-
-**Full API Documentation:** See [API_DOCUMENTATION.md](API_DOCUMENTATION.md)
-
----
-
-## Database
-
-### MongoDB (Development)
-Used on Emergent hosting for rapid development.
-
-Collections:
-- `professionals`
-- `appointments`
-- `patients`
-- `payments`
-- `testimonials`
-- `admin_users`
-
-### MySQL (Production)
-Used on Hostinger for production deployment.
-
-Tables: Same structure as MongoDB collections.
-
-**Migration Guide:** See [MONGODB_TO_MYSQL_MIGRATION.md](MONGODB_TO_MYSQL_MIGRATION.md)
-
----
-
-## Integrations
-
-### Razorpay Payment Gateway
-
-**Setup:**
-1. Create account at https://razorpay.com
-2. Get API keys
-3. Enable Razorpay Route for split payments
-4. Configure in `/backend/config/config.php`
-
-**Usage:**
-```php
-$razorpay = new RazorpayService();
-$order = $razorpay->createOrder($amount);
-```
-
-### Fast2SMS WhatsApp Business
-
-**Setup:**
-1. Create account at https://www.fast2sms.com
-2. Get API key
-3. Configure in `/backend/config/config.php`
-
-**Usage:**
-```php
-$fast2sms = new Fast2SMSService();
-$fast2sms->sendAppointmentConfirmation($appointment, $professional);
-```
-
-### Google Meet Integration
-
-**Setup:**
-1. Create Google Cloud project
-2. Enable Calendar API
-3. Get OAuth credentials
-4. Configure in `/backend/config/config.php`
-
-**Usage:**
-```php
-$googleMeet = new GoogleMeetService();
-$meetingLink = $googleMeet->createMeeting($appointment, $professional);
-```
-
-**Credentials Guide:** See [API_CREDENTIALS_REQUIRED.md](API_CREDENTIALS_REQUIRED.md)
-
----
-
-## Admin Access
-
-### Default Credentials
-- **URL:** `https://yourdomain.com/admin/login`
-- **Username:** `admin`
-- **Password:** `admin123`
-
-**⚠️ Change password after first login!**
-
-### Admin Features
-- Approve/reject professional applications
-- Create professionals manually
-- View platform analytics
-- Access doctor analytics
-- Manage testimonials
-- Track revenue (10% platform fee)
-
----
-
-## Deployment
-
-### Hostinger Deployment
-
-1. **Upload Files:**
-   - Upload `/backend/` to `public_html/`
-   - Maintain folder structure
-
-2. **Create MySQL Database:**
-   - Login to cPanel
-   - Create database: `telecarezone_db`
-   - Import `mysql_schema.sql`
-
-3. **Configure Database:**
-   - Edit `/backend/config/database.php`
-   - Update MySQL credentials
-
-4. **Configure API Keys:**
-   - Edit `/backend/config/config.php`
-   - Add Razorpay keys
-   - Add Fast2SMS key
-   - Add Google credentials
-
-5. **Upload Frontend:**
-   - Build: `yarn build`
-   - Upload `build/` contents
-
-6. **Test:**
-   - Visit `https://yourdomain.com/api/`
-   - Test admin login
-   - Test booking flow
-
-**Complete Deployment Guide:** See [DEPLOYMENT.md](DEPLOYMENT.md)
-
----
-
-## Sample Data
-
-### Default Admin
+**Admin Dashboard:**
+- URL: https://mykitchenfarm.com/admin/login
 - Username: `admin`
 - Password: `admin123`
 
-### Sample Doctors (Pre-loaded)
-1. **Dr. Savita Vaidya** - Ayurvedic Medicine (₹800)
-2. **Dr. Rohit Godse** - Gynecology (₹1200)
-3. **Dr. Natasha Cooper** - Wellness Coaching (₹600)
-
-Each doctor has:
-- Complete profile
-- 3 patient testimonials
-- Social media links
-- Functional booking system
+⚠️ **Important:** Change the admin password after first login!
 
 ---
 
-## Testing
+## 📚 Documentation
 
-### Test API
-```bash
-# Root endpoint
-curl http://localhost:8000/api/
+- **[Hostinger Deployment Guide](HOSTINGER_DEPLOYMENT_GUIDE.md)** - Complete deployment instructions
+- **[Deployment Checklist](DEPLOYMENT_CHECKLIST.md)** - Quick reference checklist
+- **[XAMPP Setup Guide](XAMPP_SETUP_GUIDE.md)** - Local development setup
+- **[Implementation Guide](IMPLEMENTATION_GUIDE.md)** - Code structure and architecture
+- **[API Documentation](API_DOCUMENTATION.md)** - API endpoints reference
 
-# Create admin
-curl -X POST http://localhost:8000/api/admin/create-default
+---
 
-# Login
-curl -X POST http://localhost:8000/api/admin/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin123"}'
+## 🧪 Testing
 
-# Get professionals
-curl http://localhost:8000/api/professionals/approved
+### Test URLs
+
+**Homepage:**
+```
+https://mykitchenfarm.com
 ```
 
-### Test Frontend
-1. Start backend: `php -S 0.0.0.0:8000`
-2. Start frontend: `yarn start`
-3. Browse to `http://localhost:3000`
-4. Test booking flow
-5. Test admin dashboard
+**API Health Check:**
+```
+https://mykitchenfarm.com/api
+```
+
+**Admin Dashboard:**
+```
+https://mykitchenfarm.com/admin/dashboard
+```
+
+**Doctor Landing Pages:**
+```
+https://mykitchenfarm.com/doctor/rakeshzha
+https://mykitchenfarm.com/doctor/rubinashah
+https://mykitchenfarm.com/doctor/saniabatra
+```
 
 ---
 
-## Security
+## ⚙️ Configuration
 
-### Best Practices Implemented
-- ✅ JWT token authentication
-- ✅ Password hashing (bcrypt)
-- ✅ SQL injection prevention (PDO prepared statements)
-- ✅ CORS configuration
-- ✅ Input validation
-- ✅ XSS protection (React)
-- ✅ HTTPS ready
+### Environment Variables
 
-### Production Checklist
-- [ ] Change default admin password
-- [ ] Add real Razorpay live keys
-- [ ] Add real Fast2SMS API key
-- [ ] Enable HTTPS (SSL certificate)
-- [ ] Configure proper CORS origins
-- [ ] Set up database backups
-- [ ] Enable error logging
-- [ ] Configure firewall rules
+Edit `config/.env` file:
 
----
+```env
+# Database
+DB_HOST=localhost
+DB_USER=u913267094_telecaredev
+DB_PASS=your_password_here
+DB_NAME=u913267094_telecaredev
 
-## Performance
+# Application
+APP_URL=https://mykitchenfarm.com
+APP_ENV=production
+APP_DEBUG=false
 
-### Optimizations
-- Indexed database queries
-- Efficient API responses
-- Minimal dependencies
-- Lazy loading (React)
-- Image optimization
-- Caching headers
+# Security
+JWT_SECRET=your_random_secret_32_chars_minimum
+```
 
-### Scalability
-- Handles 1000+ concurrent users
-- Database indexing for fast queries
-- Stateless API (horizontal scaling ready)
-- CDN-ready static assets
+### Optional Integrations
 
----
+**Email (Hostinger SMTP):**
+```env
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=587
+SMTP_USER=noreply@mykitchenfarm.com
+SMTP_PASS=your_email_password
+```
 
-## Support & Documentation
+**Fast2SMS:**
+```env
+FAST2SMS_API_KEY=your_api_key
+```
 
-### Documentation Files
-- [API Documentation](API_DOCUMENTATION.md) - Complete API reference
-- [Deployment Guide](DEPLOYMENT.md) - Production deployment
-- [Migration Guide](MONGODB_TO_MYSQL_MIGRATION.md) - MongoDB to MySQL
-- [User Guide](USER_GUIDE.md) - End-user instructions
-- [Credentials Guide](API_CREDENTIALS_REQUIRED.md) - API keys setup
+**Google Meet:**
+```env
+GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET=your_secret
+```
 
-### Troubleshooting
-- Check backend logs: `/tmp/php-error.log`
-- Check API responses: Use Postman or curl
-- Verify database connection
-- Test API endpoints individually
+**Razorpay:**
+```env
+RAZORPAY_KEY_ID=your_key_id
+RAZORPAY_KEY_SECRET=your_secret
+```
 
 ---
 
-## Contributing
+## 🐛 Troubleshooting
 
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Submit pull request
+### Common Issues
 
----
+**500 Internal Server Error**
+- Check PHP version (must be 8.0+)
+- Verify `.htaccess` exists
+- Check error logs in cPanel
 
-## License
+**Database Connection Failed**
+- Verify credentials in `.env`
+- Check database user permissions
+- Ensure database exists
 
-Proprietary - All rights reserved
+**Admin Login Not Working**
+- Run password update SQL query
+- Clear browser cache
+- Check JWT_SECRET is set
 
----
-
-## Contact
-
-- **Platform:** TeleCareZone
-- **Version:** 1.0.0 (PHP Edition)
-- **Last Updated:** December 2025
-
----
-
-## Acknowledgments
-
-- React Team - Frontend framework
-- Tailwind CSS - Styling system
-- Shadcn UI - Component library
-- PHP Community - Backend language
-- Razorpay - Payment gateway
-- Fast2SMS - WhatsApp API
-- Google - Meet integration
+**Page Not Found (404)**
+- Verify `.htaccess` is in root
+- Check mod_rewrite is enabled
+- Ensure index.html exists
 
 ---
 
-**Built with ❤️ for healthcare professionals**
+## 📊 Sample Data
+
+The database comes with 3 sample healthcare professionals:
+
+1. **Dr. Rakesh Zha**
+   - MBBS, MD (General Medicine)
+   - 13 years experience
+   - Fee: ₹700
+
+2. **Dr. Rubina Shah**
+   - BAMS, MD (Rasashastra)
+   - 8 years experience
+   - Fee: ₹500
+
+3. **Sania Batra**
+   - Wellness Coach
+   - 5 years experience
+   - Fee: ₹300
+
+---
+
+## 🔒 Security
+
+- JWT-based authentication
+- Password hashing with bcrypt
+- SQL injection protection (PDO prepared statements)
+- XSS protection headers
+- CSRF token validation
+- Secure file upload validation
+- HTTPS enforcement
+
+---
+
+## 📱 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
+
+---
+
+## 🤝 Support
+
+### Hostinger Support
+- **Live Chat:** 24/7 in cPanel
+- **Email:** support@hostinger.com
+- **Knowledge Base:** https://support.hostinger.com/
+
+### Project Issues
+- Check documentation first
+- Review error logs
+- Contact Hostinger support for hosting issues
+
+---
+
+## 📝 License
+
+This project is proprietary software. All rights reserved.
+
+---
+
+## 🎉 Credits
+
+**Developed by:** TeleCareZone Development Team  
+**Platform:** Built on Hostinger  
+**Domain:** mykitchenfarm.com
+
+---
+
+## 🚀 Getting Started
+
+1. Read: [DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)
+2. Follow: [HOSTINGER_DEPLOYMENT_GUIDE.md](HOSTINGER_DEPLOYMENT_GUIDE.md)
+3. Deploy: Upload files to Hostinger
+4. Test: Visit your domain
+5. Customize: Add your healthcare professionals
+
+**Deployment Time:** 15-30 minutes  
+**Difficulty:** Easy
+
+---
+
+**Need help?** See the deployment guide or contact Hostinger support! 🚀
