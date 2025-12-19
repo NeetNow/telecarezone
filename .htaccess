@@ -40,10 +40,10 @@
     # Serve React app for frontend routes
     RewriteRule ^(?!api/|uploads/) index.html [L]
     
-    # If request starts with /api/, route to index.php
+    # If request starts with /api/, route to api_index.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^api/(.*)$ index.php [QSA,L]
+    RewriteRule ^api/(.*)$ api_index.php [QSA,L]
     
     # If no /api/ prefix but accessing API directly
     RewriteCond %{REQUEST_FILENAME} !-f
