@@ -47,13 +47,12 @@ class Database {
     // ========================================================================
     // MYSQL CONFIGURATION
     // ========================================================================
-    // These settings work for:
-    // - Local XAMPP/WAMP (default settings)
-    // - Hostinger shared hosting (update in production)
-    private $mysql_host = 'localhost';
-    private $mysql_user = 'root';           // Change in production
-    private $mysql_pass = '';               // Change in production  
-    private $mysql_db = 'telecarezone_db';
+    // These settings are configured via environment variables
+    // For Hostinger: See config/.env file
+    private $mysql_host;
+    private $mysql_user;
+    private $mysql_pass;
+    private $mysql_db;
     
     // ========================================================================
     // MONGODB CONFIGURATION
@@ -68,21 +67,43 @@ class Database {
      */
     private function __construct() {
         // ====================================================================
+        // LOAD DATABASE CREDENTIALS FROM ENVIRONMENT
+        // ====================================================================
+        // Load from .env file or use defaults
+        $this->loadEnvironmentVariables();
+        
+        // ====================================================================
         // AUTO-DETECT DATABASE TYPE
         // ====================================================================
-        // Priority:
-        // 1. Check DB_TYPE environment variable (mongodb/mysql)
-        // 2. Default to MySQL (recommended for XAMPP/Hostinger)
-        
         $dbType = getenv('DB_TYPE') ?: 'mysql';
         
         if ($dbType === 'mongodb') {
-            // MongoDB connection (optional)
             $this->connectMongoDB();
         } else {
-            // MySQL connection (default)
             $this->connectMySQL();
         }
+    }
+    
+    /**
+     * Load database credentials from environment variables or .env file
+     */
+    private function loadEnvironmentVariables() {
+        // Load from .env file if exists
+        $envFile = __DIR__ . '/.env';
+        if (file_exists($envFile)) {
+            $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            foreach ($lines as $line) {
+                if (strpos(trim($line), '#') === 0) continue;
+                list($key, $value) = explode('=', $line, 2);
+                $_ENV[trim($key)] = trim($value);
+            }
+        }
+        
+        // Set database credentials (with fallbacks)
+        $this->mysql_host = $_ENV['DB_HOST'] ?? getenv('DB_HOST') ?: 'localhost';
+        $this->mysql_user = $_ENV['DB_USER'] ?? getenv('DB_USER') ?: 'root';
+        $this->mysql_pass = $_ENV['DB_PASS'] ?? getenv('DB_PASS') ?: '';
+        $this->mysql_db = $_ENV['DB_NAME'] ?? getenv('DB_NAME') ?: 'telecarezone_db';
     }
     
     private function connectMySQL() {
