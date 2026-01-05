@@ -391,12 +391,13 @@ export default function Blogs() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
+      <Header />
       {/* Header */}
-      <section className="py-20 px-6 bg-gradient-to-r from-purple-600 to-blue-500 text-white">
+      <section className="py-20 px-6 bg-gradient-to-br from-teal-50 to-cyan-50">
         <div className="container mx-auto max-w-6xl text-center">
-          <h1 className="text-5xl font-bold mb-6">Healthcare Insights & Articles</h1>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Healthcare Insights & Articles</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Expert advice, latest trends, and helpful guides about telemedicine and healthcare
           </p>
         </div>
