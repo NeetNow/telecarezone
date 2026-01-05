@@ -211,9 +211,10 @@ CREATE TABLE IF NOT EXISTS admin_users (
 -- ============================================================================
 -- INSERT DEFAULT ADMIN USER
 -- ============================================================================
--- Password: admin123
+-- Username: teleadmin
+-- Password: teleadm@2026
 INSERT IGNORE INTO admin_users (username, password, full_name, email) 
-VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Admin User', 'admin@telecarezone.com');
+VALUES ('teleadmin', '$2b$12$Z/OQZ.WFWQwBPE1C0IOMYuzVyl5d.ORqps5tIJ/KB7ssrjkMiQC72', 'Admin User', 'admin@mykitchenfarm.com');
 
 -- ============================================================================
 -- INSERT SAMPLE PROFESSIONALS (3 Experts as requested)
