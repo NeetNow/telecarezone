@@ -56,7 +56,7 @@ A complete SAAS platform for healthcare professionals to manage their online pre
 
 ### Prerequisites
 - Hostinger shared hosting account
-- Domain name (mykitchenfarm.com)
+- Domain name (telecarezone.com)
 - MySQL database
 - PHP 8.0 or higher
 - cPanel access
@@ -82,7 +82,7 @@ A complete SAAS platform for healthcare professionals to manage their online pre
    - Generate JWT secret
 
 5. **Test Deployment**
-   - Visit: https://mykitchenfarm.com
+   - Visit: https://telecarezone.com
    - Login: teleadmin / teleadm@2026
 
 ### Detailed Instructions
@@ -96,7 +96,7 @@ A complete SAAS platform for healthcare professionals to manage their online pre
 ## 🔑 Default Credentials
 
 **Admin Dashboard:**
-- URL: https://mykitchenfarm.com/admin/login
+- URL: https://telecarezone.com/admin/login
 - Username: `teleadmin`
 - Password: `teleadm@2026`
 
