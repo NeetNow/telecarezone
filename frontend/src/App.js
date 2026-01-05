@@ -74,6 +74,11 @@ function AppContent() {
         <Route path="/admin/*" element={<AdminDashboard />} />
         <Route path="/payment/:appointmentId" element={<PaymentPage />} />
         <Route path="/confirmation/:appointmentId" element={<ConfirmationPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
       <Toaster position="top-right" />
     </>
