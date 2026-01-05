@@ -82,7 +82,7 @@ export default function PrivacyPolicy() {
           <p className="text-gray-600">
             For privacy-related inquiries, contact us at:
             <br />
-            <span className="font-medium">Email:</span> privacy@telecarezone.com
+            <span className="font-medium">Email:</span> privacy@mykitchenfarm.com
             <br />
             <span className="font-medium">Phone:</span> +91 1800-XXX-XXXX
           </p>

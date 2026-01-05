@@ -94,7 +94,7 @@ export const Footer = () => {
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>+91 1800-XXX-XXXX</li>
-              <li>support@telecarezone.com</li>
+              <li>support@mykitchenfarm.com</li>
             </ul>
           </div>
         </div>

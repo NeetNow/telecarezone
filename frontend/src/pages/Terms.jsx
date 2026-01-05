@@ -89,7 +89,7 @@ export default function Terms() {
           <p className="text-gray-600">
             For questions about these terms, contact:
             <br />
-            <span className="font-medium">Email:</span> legal@telecarezone.com
+            <span className="font-medium">Email:</span> legal@mykitchenfarm.com
             <br />
             <span className="font-medium">Phone:</span> +91 1800-XXX-XXXX
           </p>

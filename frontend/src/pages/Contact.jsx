@@ -95,8 +95,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2 text-gray-900">Email</h3>
-                  <p className="text-gray-600">support@telecarezone.com</p>
-                  <p className="text-gray-600">info@telecarezone.com</p>
+                  <p className="text-gray-600">support@mykitchenfarm.com</p>
+                  <p className="text-gray-600">info@mykitchenfarm.com</p>
                 </div>
               </div>
             </Card>

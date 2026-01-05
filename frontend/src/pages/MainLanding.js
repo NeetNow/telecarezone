@@ -577,7 +577,7 @@ export default function MainLanding() {
                 </li>
                 <li className="flex items-start gap-3">
                   <MessageCircle className="w-5 h-5 text-teal-400 mt-0.5" />
-                  <p className="text-gray-400">support@telecarezone.com</p>
+                  <p className="text-gray-400">support@mykitchenfarm.com</p>
                 </li>
               </ul>
               <div className="mt-6 p-4 bg-gray-800 rounded-xl">

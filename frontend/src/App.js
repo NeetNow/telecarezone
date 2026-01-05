@@ -32,7 +32,7 @@ function AppContent() {
     const hostname = window.location.hostname;
     const parts = hostname.split('.');
     
-    // Check if subdomain exists (e.g., doctorname.telecarezone.com)
+    // Check if subdomain exists (e.g., doctorname.mykitchenfarm.com)
     // But skip common subdomains like 'www', 'preview', 'localhost' and preview URLs
     const skipSubdomains = ['www', 'preview', 'localhost'];
     const potentialSubdomain = parts[0];
