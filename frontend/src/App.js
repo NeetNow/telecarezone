@@ -37,8 +37,8 @@ function AppContent() {
     const skipSubdomains = ['www', 'preview', 'localhost'];
     const potentialSubdomain = parts[0];
     
-    // Skip if it's a preview URL (contains 'preview.emergentagent.com')
-    const isPreviewDomain = hostname.includes('preview.emergentagent.com');
+    // Skip if it's a preview URL (contains 'preview.mykitchenfarm.com')
+    const isPreviewDomain = hostname.includes('www.mykitchenfarm.com');
     
     if (parts.length > 2 && !skipSubdomains.includes(potentialSubdomain) && !isPreviewDomain) {
       setSubdomain(potentialSubdomain);
