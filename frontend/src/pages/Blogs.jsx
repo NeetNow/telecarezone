@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, User, ArrowRight, Clock } from 'lucide-react';
+import { Calendar, User, ArrowRight, Clock, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Header, Footer } from '@/components/Layout';
 
 const blogPosts = [
   {
