@@ -118,24 +118,24 @@ A complete SAAS platform for healthcare professionals to manage their online pre
 
 **Homepage:**
 ```
-https://mykitchenfarm.com
+https://telecarezone.com
 ```
 
 **API Health Check:**
 ```
-https://mykitchenfarm.com/api
+https://telecarezone.com/api
 ```
 
 **Admin Dashboard:**
 ```
-https://mykitchenfarm.com/admin/dashboard
+https://telecarezone.com/admin/dashboard
 ```
 
 **Doctor Landing Pages:**
 ```
-https://mykitchenfarm.com/doctor/rakeshzha
-https://mykitchenfarm.com/doctor/rubinashah
-https://mykitchenfarm.com/doctor/saniabatra
+https://telecarezone.com/doctor/priya-sharma
+https://telecarezone.com/doctor/rajesh-kumar
+https://telecarezone.com/doctor/ananya-desai
 ```
 
 ---
@@ -150,7 +150,7 @@ This project is proprietary software. All rights reserved.
 
 **Developed by:** TeleCareZone Development Team  
 **Platform:** Built on Hostinger  
-**Domain:** mykitchenfarm.com
+**Domain:** telecarezone.com
 
 ---
 
