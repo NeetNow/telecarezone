@@ -181,7 +181,7 @@ export default function DoctorOnboarding() {
           <p className="text-gray-600 mb-4">
             Landing page URL: <br />
             <span className="font-mono text-sm text-purple-600">
-              {createdSubdomain}.telecarezone.com
+              {createdSubdomain}.mykitchenfarm.com
             </span>
           </p>
           <Button onClick={() => navigate('/admin/doctors')} className="w-full">
