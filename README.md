@@ -108,7 +108,6 @@ A complete SAAS platform for healthcare professionals to manage their online pre
 
 - **[Hostinger Deployment Guide](HOSTINGER_DEPLOYMENT_GUIDE.md)** - Complete deployment instructions
 - **[Deployment Checklist](DEPLOYMENT_CHECKLIST.md)** - Quick reference checklist
-- **[XAMPP Setup Guide](XAMPP_SETUP_GUIDE.md)** - Local development setup
 
 ---
 
