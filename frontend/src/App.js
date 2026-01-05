@@ -14,6 +14,11 @@ import DoctorLanding from "@/pages/DoctorLanding";
 import BookAppointment from "@/pages/BookAppointment";
 import PaymentPage from "@/pages/PaymentPage";
 import ConfirmationPage from "@/pages/ConfirmationPage";
+import About from "@/pages/About";
+import Blogs from "@/pages/Blogs";
+import Contact from "@/pages/Contact";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import Terms from "@/pages/Terms";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
