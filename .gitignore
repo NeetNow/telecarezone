@@ -40,3 +40,7 @@ backend/server.py
 
 # Test Files
 /test_result.md
+-e 
+# Environment files
+*.env
+*.env.*
