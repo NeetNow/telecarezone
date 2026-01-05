@@ -412,7 +412,7 @@ export default function Blogs() {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-full font-medium transition-all ${
                 selectedCategory === category
-                  ? 'bg-purple-600 text-white shadow-lg'
+                  ? 'bg-teal-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-gray-100 border'
               }`}
             >
@@ -428,7 +428,7 @@ export default function Blogs() {
           {filteredPosts.map(post => (
             <Card 
               key={post.id} 
-              className="overflow-hidden cursor-pointer hover:shadow-xl transition-shadow group"
+              className="overflow-hidden cursor-pointer hover:shadow-xl transition-shadow group border-0 shadow-lg"
               onClick={() => setSelectedPost(post)}
             >
               <div className="relative h-48 overflow-hidden">
@@ -438,13 +438,13 @@ export default function Blogs() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-purple-600 text-white text-sm rounded-full">
+                  <span className="px-3 py-1 bg-teal-600 text-white text-sm rounded-full">
                     {post.category}
                   </span>
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-purple-600 transition-colors">
+                <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-teal-600 transition-colors text-gray-900">
                   {post.title}
                 </h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">
@@ -465,6 +465,7 @@ export default function Blogs() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
