@@ -323,6 +323,7 @@ export default function Blogs() {
   if (selectedPost) {
     return (
       <div className="min-h-screen bg-white">
+        <Header />
         {/* Article Header */}
         <div className="relative h-96 overflow-hidden">
           <img 
@@ -333,7 +334,7 @@ export default function Blogs() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8">
             <div className="container mx-auto max-w-4xl">
-              <div className="inline-block px-3 py-1 bg-purple-600 text-white text-sm rounded-full mb-4">
+              <div className="inline-block px-3 py-1 bg-teal-600 text-white text-sm rounded-full mb-4">
                 {selectedPost.category}
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -362,9 +363,10 @@ export default function Blogs() {
           <Button 
             onClick={() => setSelectedPost(null)} 
             variant="outline" 
-            className="mb-8"
+            className="mb-8 border-teal-600 text-teal-600"
           >
-            ← Back to all articles
+            <ArrowLeft className="mr-2 w-4 h-4" />
+            Back to all articles
           </Button>
           
           <div 
@@ -373,16 +375,17 @@ export default function Blogs() {
           />
           
           {/* CTA */}
-          <div className="mt-12 p-8 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">Ready to Experience Better Healthcare?</h3>
+          <div className="mt-12 p-8 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl">
+            <h3 className="text-2xl font-bold mb-4 text-gray-900">Ready to Experience Better Healthcare?</h3>
             <p className="text-gray-600 mb-6">
               Book a consultation with our verified healthcare professionals today.
             </p>
-            <Button onClick={() => navigate('/')} className="bg-purple-600">
+            <Button onClick={() => navigate('/')} className="bg-teal-600 hover:bg-teal-700">
               Book Consultation <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
