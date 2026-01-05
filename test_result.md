@@ -143,12 +143,12 @@
    - **Response**: 5 professionals retrieved from MySQL
 
 4. **Frontend Homepage Test**
-   - **URL**: https://medconnect-135.preview.emergentagent.com
+   - **URL**: https://carebridge-39.preview.emergentagent.com
    - **Result**: ✅ PASS
    - **Verification**: Homepage loads, experts displayed correctly
 
 5. **Admin Dashboard Test**
-   - **URL**: https://medconnect-135.preview.emergentagent.com/admin/login
+   - **URL**: https://carebridge-39.preview.emergentagent.com/admin/login
    - **Result**: ✅ PASS
    - **Verification**: Login successful, dashboard displays platform metrics
 

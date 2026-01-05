@@ -336,15 +336,15 @@ Added prominent badge on hero section:
 
 ```bash
 # Verify doctor profiles
-curl https://medconnect-135.preview.emergentagent.com/api/professionals/approved
+curl https://carebridge-39.preview.emergentagent.com/api/professionals/approved
 # Result: 4 doctors returned (including 3 new ones)
 
 # Check individual profile
-curl https://medconnect-135.preview.emergentagent.com/api/public/professional/savitavaidya
+curl https://carebridge-39.preview.emergentagent.com/api/public/professional/savitavaidya
 # Result: Complete profile data returned
 
 # Admin access (direct URL only)
-curl https://medconnect-135.preview.emergentagent.com/admin/login
+curl https://carebridge-39.preview.emergentagent.com/admin/login
 # Result: Login page accessible
 ```
 
@@ -362,9 +362,9 @@ All features work correctly across all screen sizes.
 ## Live Demo URLs
 
 ### Main Platform
-- Homepage: `https://medconnect-135.preview.emergentagent.com`
-- Join Expert: `https://medconnect-135.preview.emergentagent.com/join-expert`
-- Admin (hidden): `https://medconnect-135.preview.emergentagent.com/admin/login`
+- Homepage: `https://carebridge-39.preview.emergentagent.com`
+- Join Expert: `https://carebridge-39.preview.emergentagent.com/join-expert`
+- Admin (hidden): `https://carebridge-39.preview.emergentagent.com/admin/login`
 
 ### Sample Doctor Subdomains
 1. Dr. Savita Vaidya: `https://savitavaidya.telecarezone.com` (in production with DNS)

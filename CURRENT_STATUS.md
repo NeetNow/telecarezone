@@ -4,7 +4,7 @@
 
 **Date:** December 12, 2025  
 **Environment:** Emergent Platform  
-**Preview URL:** https://medconnect-135.preview.emergentagent.com
+**Preview URL:** https://carebridge-39.preview.emergentagent.com
 
 ---
 
@@ -35,7 +35,7 @@
 ## 🔑 Test Credentials
 
 **Admin Login:**
-- URL: https://medconnect-135.preview.emergentagent.com/admin/login
+- URL: https://carebridge-39.preview.emergentagent.com/admin/login
 - Username: `admin`
 - Password: `admin123`
 
@@ -171,13 +171,13 @@ POST /api/admin/onboarding/upload
 
 ```bash
 # Test API health
-curl https://medconnect-135.preview.emergentagent.com/api
+curl https://carebridge-39.preview.emergentagent.com/api
 
 # Test professionals endpoint
-curl https://medconnect-135.preview.emergentagent.com/api/professionals/approved
+curl https://carebridge-39.preview.emergentagent.com/api/professionals/approved
 
 # Test admin login
-curl -X POST https://medconnect-135.preview.emergentagent.com/api/admin/login \
+curl -X POST https://carebridge-39.preview.emergentagent.com/api/admin/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"admin123"}'
 ```

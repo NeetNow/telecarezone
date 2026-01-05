@@ -97,7 +97,7 @@ MySQL Database (MariaDB)
 ## Testing Credentials
 
 **Admin Login:**
-- URL: `https://medconnect-135.preview.emergentagent.com/admin/login`
+- URL: `https://carebridge-39.preview.emergentagent.com/admin/login`
 - Username: `admin`
 - Password: `admin123`
 
