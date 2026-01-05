@@ -35,13 +35,8 @@
 - [ ] Open phpMyAdmin in cPanel
 - [ ] Select database: `u913267094_telecaredev`
 - [ ] Import `database_import.sql`
-- [ ] Run admin password update query:
-```sql
-UPDATE admin_users 
-SET password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' 
-WHERE username = 'admin';
-```
 - [ ] Verify 3 doctors imported (professionals table)
+- [ ] Verify admin user imported (admin_users table)
 
 ---
 
@@ -86,7 +81,7 @@ JWT_SECRET=random_32_chars      ← Generate new!
 
 ### Test 3: Admin Login
 - [ ] Visit: https://mykitchenfarm.com/admin/login
-- [ ] Login: admin / admin123
+- [ ] Login: teleadmin / teleadm@2026
 - [ ] Should redirect to dashboard
 
 ### Test 4: Doctor Pages
@@ -113,8 +108,8 @@ JWT_SECRET=random_32_chars      ← Generate new!
 - Double-check DB_PASS in config/.env
 
 ### Problem: Can't Login
-**Fix:** Re-run password update SQL
-- Use query from Database Setup section
+**Fix:** Check username is teleadmin (not admin)
+- Password: teleadm@2026
 
 ### Problem: Page Not Found
 **Fix:** Check .htaccess exists in root
@@ -137,31 +132,10 @@ Set these in cPanel File Manager:
 
 ✅ Homepage loads with doctors  
 ✅ API responds with JSON  
-✅ Admin login works  
+✅ Admin login works (teleadmin)  
 ✅ All admin features accessible  
 ✅ No errors in browser console  
 ✅ SSL padlock shows in browser  
-
----
-
-## ⏳ Configure Later (Optional)
-
-These require external API keys (not needed for basic functionality):
-
-- Email notifications (SMTP setup)
-- WhatsApp/SMS (Fast2SMS API)
-- Google Meet (OAuth setup)
-- Razorpay payments (API keys)
-
-**Instructions:** See HOSTINGER_DEPLOYMENT_GUIDE.md
-
----
-
-## 🆘 Need Help?
-
-1. **Check Error Log**: cPanel → Error Log
-2. **Hostinger Support**: 24/7 live chat in cPanel
-3. **Review Full Guide**: HOSTINGER_DEPLOYMENT_GUIDE.md
 
 ---
 
