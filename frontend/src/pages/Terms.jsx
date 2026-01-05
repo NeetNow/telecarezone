@@ -86,7 +86,7 @@ export default function Terms() {
           <p>
             For questions about these terms, contact:
             <br />
-            Email: legal@mykitchenfarm.com
+            Email: legal@telecarezone.com
             <br />
             Phone: +91 1800-XXX-XXXX
           </p>

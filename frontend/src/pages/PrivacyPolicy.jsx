@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
           <p>
             For privacy-related inquiries, contact us at:
             <br />
-            Email: privacy@mykitchenfarm.com
+            Email: privacy@telecarezone.com
             <br />
             Phone: +91 1800-XXX-XXXX
           </p>
