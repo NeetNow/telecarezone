@@ -1,7 +1,7 @@
 <?php
 /**
  * Database Configuration
- * Compatible with both MongoDB (Emergent) and MySQL (Hostinger)
+ * Compatible with MySQL (Hostinger)
  */
 
 class Database {
